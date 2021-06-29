@@ -8,9 +8,11 @@
     <active-user
       v-for="detail in details"
       :key="detail.id"
+      :id="detail.id"
       :user-name="detail.name"
       :age="detail.age"
-      :is-active="true"
+      :is-active="detail.isActive"
+      @toggle-status="toggleUserStatus"
     >
     </active-user>
   </section>
@@ -44,11 +46,12 @@ export default {
     };
   },
   methods: {
-    // toggleDetailStatus(id) {
-    //   alert("This Work");
-    //   const identifiedStatus = this.details.find((detail) => detail.id === id);
-    //   identifiedStatus.isActive = !identifiedStatus.isActive;
-    // },
+    //   communicate from component to its parent
+    toggleUserStatus(id) {
+      alert("This Work");
+      const identifiedStatus = this.details.find((detail) => detail.id === id);
+      identifiedStatus.isActive = !identifiedStatus.isActive;
+    },
     addUser(name, age) {
       const newUserContact = {
         id: new Date().toISOString(),

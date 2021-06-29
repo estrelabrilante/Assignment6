@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ userName }} {{ userIsActive ? "[Active]" : " " }}</h2>
+    <h2>{{ userName }} {{ isActive ? "[Active]" : " " }}</h2>
     <button @click="toggleStatus">change Status</button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       detailsAreVisible: false,
-      userIsActive: this.isActive,
+      //   userIsActive: this.isActive,
     };
   },
   methods: {
@@ -48,8 +48,7 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleStatus() {
-      //   this.$emit("toggle-status", this.id);
-      this.userIsActive = !this.userIsActive;
+      this.$emit("toggle-status", this.id);
     },
   },
 };
